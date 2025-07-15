@@ -1,0 +1,46 @@
+{
+  "Voiture": {
+    "Toyota": ["Corolla", "Camry", "Yaris", "Prius", "Auris", "Avensis", "Aygo", "Verso"],
+    "Renault": ["Clio", "Mégane", "Twingo", "Scénic", "Latitude", "Fluence", "Laguna", "Modus", "Safrane", "Talisman", "kardian"],
+    "Peugeot": ["108", "208", "308", "508", "3008", "2008", "106", "206", "207", "406", "407", "607"],
+    "Volkswagen": ["Golf", "Polo", "Passat", "Jetta", "Arteon", "Up!", "Beetle", "Bora", "Lupo", "Touran"],
+    "Citroën": ["C1", "C2", "C3", "C4", "C5", "DS3", "DS4", "DS5", "C-Zero"],
+    "Hyundai": ["i10", "i20", "i30", "Elantra", "Accent", "Getz", "Atos"],
+    "Kia": ["Rio", "Ceed", "Picanto", "Stinger", "Cerato", "Soul", "Optima"],
+    "Honda": ["Civic", "Accord", "Jazz", "City", "CR-Z"],
+    "Nissan": ["Micra", "Almera", "Sunny", "Leaf", "Note", "Pulsar", "Primera"],
+    "Fiat": ["Panda", "500", "Tipo", "Punto", "Bravo", "Stilo", "Croma", "Marea"],
+    "Skoda": ["Fabia", "Octavia", "Superb", "Scala", "Rapid", "Roomster", "Citigo"],
+    "Opel": ["Corsa", "Astra", "Insignia", "Adam", "Vectra", "Meriva", "Zafira"],
+    "Dacia": ["Sandero", "logan", "Spring"]
+  },
+  "SUV/4x4": {
+    "Toyota": ["RAV4", "Highlander", "Land Cruiser", "C-HR", "Fortuner", "Urban Cruiser"],
+    "Ford": ["Kuga", "Edge", "Explorer", "Puma", "Bronco", "EcoSport", "Everest"],
+    "Land Rover": ["Defender", "Discovery", "Range Rover", "Velar", "Evoque", "Freelander"],
+    "Nissan": ["Qashqai", "X-Trail", "Juke", "Patrol", "Murano", "Terrano"],
+    "Hyundai": ["Tucson", "Santa Fe", "Kona", "Palisade", "ix35", "ix55"],
+    "Kia": ["Sportage", "Sorento", "Seltos", "Telluride", "Niro"],
+    "Volkswagen": ["Tiguan", "Touareg", "T-Roc", "Atlas", "Taigo"],
+    "Peugeot": ["3008", "5008", "2008"],
+    "Jeep": ["Wrangler", "Cherokee", "Grand Cherokee", "Compass", "Renegade", "Commander", "Avenger"],
+    "Mitsubishi": ["Outlander", "Pajero", "Eclipse Cross", "ASX", "Montero"],
+    "Suzuki": ["Vitara", "S-Cross", "Jimny", "SX4"],
+    "Dacia": ["Duster"]
+  },
+  "Utilitaire": {
+    "Renault": ["Kangoo", "Trafic", "Master", "Express", "Dokker"],
+    "Ford": ["Transit", "Tourneo", "Courier", "Custom", "Connect", "Raptor"],
+    "Mercedes": ["Sprinter", "Vito", "Citan"],
+    "Peugeot": ["Partner", "Expert", "Boxer", "Rifter", "Land-Trek"],
+    "Citroën": ["Berlingo", "Jumpy", "Jumper", "Nemo"],
+    "Fiat": ["Ducato", "Doblo", "Fiorino", "Scudo", "Talento", "Full-Back"],
+    "Volkswagen": ["Transporter", "Caddy", "Crafter", "Multivan", "California", "Caravelle", "Amarok"],
+    "Opel": ["Vivaro", "Movano", "Combo", "Zafira Life"],
+    "Nissan": ["NV200", "NV300", "NV400", "Primastar"],
+    "Iveco": ["Daily", "Massif"],
+    "Toyota": ["Proace", "Hilux"],
+    "Mitsubishi": ["L200"],
+    "Isuzu": ["D-max"]
+  }
+}

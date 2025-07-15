@@ -1,0 +1,255 @@
+/* VARIABLES */
+:root {
+  --autofix-dark: #0a192f;
+  --autofix-primary: #64ffda;
+  --autofix-light: #ccd6f6;
+  --autofix-gray: #8892b0;
+  --placeholder-color: #a0aec0;
+  --input-border: #e2e8f0;
+  --error-border: #fed7d7;
+  --error-bg: #fff5f5;
+}
+
+/* BASE STYLES */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 2rem;
+}
+
+.login-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--autofix-primary);
+}
+
+/* HEADER */
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-logo {
+  height: 50px;
+  margin-bottom: 1.5rem;
+}
+
+.login-header h2 {
+  color: var(--autofix-dark);
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.login-header p {
+  color: var(--autofix-gray);
+  font-size: 0.95rem;
+}
+
+/* FORM */
+.login-form {
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: var(--autofix-dark);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  color: var(--autofix-dark);
+  background-color: #fff;
+}
+
+.form-group input::placeholder {
+  color: var(--placeholder-color);
+  opacity: 1;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--autofix-primary);
+  box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.2);
+}
+
+.forgot-password {
+  display: block;
+  text-align: right;
+  margin-top: 0.5rem;
+  color: var(--autofix-gray);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: var(--autofix-primary);
+}
+
+/* BUTTON */
+.login-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--autofix-primary);
+  color: var(--autofix-dark);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.login-button:hover {
+  background-color: #52e0c4;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+}
+
+/* SEPARATOR */
+.login-separator {
+  position: relative;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.login-separator::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--input-border);
+  z-index: 1;
+}
+
+.login-separator span {
+  position: relative;
+  display: inline-block;
+  padding: 0 1rem;
+  background: #f8f9fa;
+  color: var(--autofix-gray);
+  z-index: 2;
+}
+
+/* GOOGLE BUTTON */
+.google-login {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.google-login .login-button {
+  background: #ffffff;
+  color: #0a192f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid var(--input-border);
+}
+
+.google-login .login-button:hover {
+  background: #f8f9fa;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* FOOTER */
+.login-footer {
+  text-align: center;
+  color: var(--autofix-gray);
+  font-size: 0.9rem;
+}
+
+.login-footer button {
+  background: none;
+  border: none;
+  color: var(--autofix-primary);
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0;
+  margin-left: 0.25rem;
+}
+
+.login-footer button:hover {
+  text-decoration: underline;
+}
+
+/* ERROR */
+.login-error {
+  color: #e53e3e;
+  background: var(--error-bg);
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  border: 1px solid var(--error-border);
+}
+
+/* TRANSITIONS */
+.form-group input,
+.login-button,
+.forgot-password {
+  transition: all 0.3s ease;
+}
+
+/* RESPONSIVE */
+@media (max-width: 576px) {
+  .login-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .login-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .login-container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .login-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .form-group input {
+    padding: 0.7rem 0.9rem;
+  }
+
+  .login-button {
+    padding: 0.9rem;
+  }
+}
