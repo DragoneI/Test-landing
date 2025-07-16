@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Hero.css';
+import carImage from '../public/car1.svg'; // Chemin corrigé
 
 const Hero = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Animation pour les éléments
     const animateElements = () => {
       const elements = document.querySelectorAll('.hero-content h1, .hero-content p, .hero-buttons');
       elements.forEach((el, index) => {
@@ -16,12 +16,11 @@ const Hero = () => {
         }, index * 200);
       });
     };
-
     animateElements();
   }, []);
 
   const handleRendezVousClick = () => {
-    navigate('/login'); // Redirection vers la page Login
+    navigate('/login');
   };
 
   return (
@@ -41,11 +40,11 @@ const Hero = () => {
         <div className="hero-image">
           <div className="car-image">
             <img 
-              src="../public/car1.svg" 
+              src={carImage} // Utilisation de l'import
               alt="Voiture de luxe" 
               className="car-img"
               onError={(e) => {
-                e.target.src = '../public/car1.svg';
+                e.target.src = carImage; // Utilisation du même import
               }}
             />
           </div>
