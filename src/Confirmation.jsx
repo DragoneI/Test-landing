@@ -1,3 +1,4 @@
+// Confirmation.jsx
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
@@ -12,60 +13,29 @@ const Confirmation = () => {
   const [error, setError] = useState(null);
   const [emailSent, setEmailSent] = useState(false);
 
-  // Récupérer l'ID du rendez-vous
   const appointmentId = location.state?.appointmentId || 
                        new URLSearchParams(location.search).get('id');
 
   useEffect(() => {
     const fetchAndConfirmAppointment = async () => {
       try {
-        if (!appointmentId) {
-          throw new Error('Aucun ID de rendez-vous trouvé');
-        }
+        if (!appointmentId) throw new Error('Aucun ID de rendez-vous trouvé');
 
-        // 1. Récupération des données depuis Firestore
         const docRef = doc(db, 'appointments', appointmentId);
         const docSnap = await getDoc(docRef);
 
-        if (!docSnap.exists()) {
-          throw new Error('Rendez-vous non trouvé dans la base de données');
-        }
+        if (!docSnap.exists()) throw new Error('Rendez-vous non trouvé');
 
         const data = docSnap.data();
         setAppointmentDetails(data);
 
-        // 2. Envoi de l'email via Formspree (version optimisée)
-        const formData = new URLSearchParams();
-        formData.append('_replyto', data.userInfo.email);
-        formData.append('_subject', `Confirmation RDV - ${data.vehicleInfo.make}`);
-        formData.append('nom', data.userInfo.fullName);
-        formData.append('telephone', data.userInfo.phone);
-        formData.append('vehicule', `${data.vehicleInfo.make} ${data.vehicleInfo.model}`);
-        formData.append('immatriculation', data.vehicleInfo.licensePlate);
-        formData.append('date', new Date(data.appointmentInfo.date).toLocaleDateString('fr-FR'));
-        formData.append('heure', data.appointmentInfo.time);
-
-        const response = await fetch('https://formspree.io/f/myzjayba', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json'
-          },
-          body: formData
-        });
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || "Le service d'email est temporairement indisponible");
-        }
-
-        setEmailSent(true);
+        // 👉 À personnaliser : Intégration d'un service email comme EmailJS, SendGrid ou autre
+        // const response = await sendEmail(data);
+        // if (response.success) setEmailSent(true);
 
       } catch (err) {
-        console.error("Erreur détaillée:", err);
-        setError(err.message.includes('quota') 
-          ? "Nous avons atteint notre limite d'envois - Votre RDV est confirmé mais l'email n'a pas pu être envoyé"
-          : err.message
-        );
+        console.error("Erreur:", err);
+        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -74,7 +44,6 @@ const Confirmation = () => {
     fetchAndConfirmAppointment();
   }, [appointmentId]);
 
-  // Formatage de la date
   const formatDate = (dateString) => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString('fr-FR', options);
@@ -99,7 +68,7 @@ const Confirmation = () => {
           <p>{error}</p>
           {appointmentDetails && (
             <div className="confirmation-details">
-              <p>Votre rendez-vous est confirmé malgré cette erreur technique :</p>
+              <p>Votre rendez-vous est confirmé malgré cette erreur :</p>
               <p><strong>Date :</strong> {formatDate(appointmentDetails.appointmentInfo.date)}</p>
               <p><strong>Heure :</strong> {appointmentDetails.appointmentInfo.time}</p>
             </div>
@@ -150,20 +119,14 @@ const Confirmation = () => {
         <div className="confirmation-footer">
           {emailSent ? (
             <p className="email-confirmation">
-              <svg className="email-icon" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6M20 6L12 11L4 6H20M20 18H4V8L12 13L20 8V18Z" />
-              </svg>
-              Un email de confirmation vous a été envoyé
+              ✅ Un email de confirmation vous a été envoyé
             </p>
           ) : (
             <p className="email-warning">
-              <svg className="warning-icon" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M12 2L1 21h22M12 6l7.5 13h-15M11 10v4h2v-4m-2 6v2h2v-2"/>
-              </svg>
-              L'envoi de l'email a échoué mais votre RDV est bien confirmé
+              ⚠️ L'envoi de l'email n'est pas activé dans cette version
             </p>
           )}
-          
+
           <button onClick={() => navigate('/')} className="primary-btn">
             Retour à l'accueil
           </button>
